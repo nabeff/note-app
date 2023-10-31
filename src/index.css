@@ -60,6 +60,8 @@ textarea:focus{
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  /*white-space: pre-wrap; means if you save a text with space in between it will allows it*/
+  white-space: pre-wrap;
 }
 
 .note-footer{
