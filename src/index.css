@@ -5,15 +5,19 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #f6f6f6;
+  font-size: 1.2rem;
+  
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+    
 }
 
 .container{
-  max-width: 960px;
+  max-width: 1080px;
   margin-right: auto;
   margin-left: auto;
   padding-right: 15px;
@@ -24,27 +28,55 @@ code {
 .notes-list{
   display: grid;
   grid-gap: 1rem;
- grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+  grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
 }
+
 .note.new{
-  background-color: aqua;
+  background-color: rgb(228, 228, 228);
+  
 }
 
 textarea{
   border: none;
   resize: none;
-  background-color: aqua;
+  background-color: rgb(228, 228, 228);
+  font-size: 1.1rem;
 }
 
+.toggle{
+  background-color: rgb(233, 233, 233);
+  border: none;
+  border-radius: 30px;
+  padding: 8px;
+  width: 40px;
+  
+}
+
+.toggle:hover{
+  cursor: pointer;
+}
+
+.logo{
+  font-size: 1.3rem;
+  font-weight: bolder;
+}
+
+
 .save{
-  background-color: lightgray;
+  background-color: rgb(228, 228, 228);
   border: none;
   border-radius: 15px;
-  padding: 5px 10px 5px 10px;
+  padding: 10px;
+  font-weight: bolder;
+  color:black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
 }
 
 .save:hover{
-  background-color: green;
+  background-color: rgb(228, 228, 228);
   cursor: pointer;
 }
 
@@ -53,11 +85,14 @@ textarea:focus{
 }
 
 .note {
-  background-color: #ffda45 ;
+  background-color: rgb(255, 255, 170) ;
   margin-bottom: 10px;
   border-radius: 10px;
+  border-top-right-radius:30px;
+  border-bottom-right-radius:15px;
+  border-bottom-left-radius:10px;
   padding: 1rem;
-  min-height: 170px;
+  min-height: 200px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -73,8 +108,13 @@ textarea:focus{
 
 .delete-icon{
   cursor: pointer;
+  color: #ff0000 ;
 }
 
+.logo-save{
+  font-size: 1.2rem;
+  
+}
 .search{
   display: flex;
   align-items: center;
@@ -101,7 +141,22 @@ textarea:focus{
 
 .dark-mode{
   background-color: black;
+  transition: 1s;
 }
 .dark-mode h1{
   color: white;
+  transition: .5s;
 }
+
+.button{
+  background-color: #ffda45;
+  width:40px;
+  height: 40px;
+  
+}
+
+.light-mode{
+  background-color: #f6f6f6;
+  transition: .5s;
+}
+

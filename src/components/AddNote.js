@@ -29,7 +29,7 @@ const AddNote = ({ handleAddNote }) => {
       <div className="note-footer">
         <small>{characterLimit - noteText.length}</small>
         <button className="save" onClick={handleSaveClick}>
-          Save
+          <i class="uil uil-check-circle logo-save"></i>
         </button>
       </div>
     </div>

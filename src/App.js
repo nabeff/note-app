@@ -1,36 +1,24 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import { nanoid } from "nanoid";
-import NotesList from "./components/NoteList";
+import NoteList from "./components/NoteList";
 import Search from "./components/Search";
 import Header from "./components/Header";
 
 const App = () => {
   const [notes, setNotes] = useState([
-    {
-      id: nanoid(),
-      text: "This is my first note!",
-      date: "15/04/2023",
-    },
-    {
-      id: nanoid(),
-      text: "This is my second note!",
-      date: "16/04/2023",
-    },
-    {
-      id: nanoid(),
-      text: "This is my third note!",
-      date: "17/04/2023",
-    },
-    {
-      id: nanoid(),
-      text: "This is my new note!",
-      date: "30/04/2023",
-    },
+    // ... your initial notes ...
   ]);
 
   const [searchText, setSearchText] = useState("");
+  const [darkMode, setDarkMode] = useState(false); // Use a boolean for dark mode
 
-  const [darkMode, setdarkMode] = useState(false);
+  useEffect(() => {
+    const savedNotes = JSON.parse(localStorage.getItem("react-notes-app-data"));
+
+    if (savedNotes) {
+      setNotes(savedNotes);
+    }
+  }, []);
 
   useEffect(() => {
     localStorage.setItem("react-notes-app-data", JSON.stringify(notes));
@@ -52,17 +40,22 @@ const App = () => {
     setNotes(newNotes);
   };
 
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode); // Toggle dark mode
+  };
+
   return (
-    <div className={`${darkMode && "dark-mode"}`}>
+    <div className={`${darkMode ? "dark-mode" : "light-mode"}`}>
       <div className="container">
-        <Header handleToggleDarkMode={setdarkMode} />
+        <Header handleToggleDarkMode={toggleDarkMode} darkMode={darkMode} />
         <Search handleSearchNote={setSearchText} />
-        <NotesList
+        <NoteList
           notes={notes.filter((note) =>
             note.text.toLowerCase().includes(searchText)
           )}
           handleAddNote={addNote}
           handleDeleteNote={deleteNote}
+          handleToggleDarkMode={toggleDarkMode}
         />
       </div>
     </div>
